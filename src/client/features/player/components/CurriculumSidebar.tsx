@@ -1,3 +1,4 @@
+"use client";
 
 import { CheckCircle2, Lock, FileQuestion, Clock, Play } from "lucide-react";
 import { usePlayerStore } from "@/client/features/player/store/playerStore";

@@ -1,3 +1,4 @@
+"use client";
 
 import { X, Trophy, Flame } from "lucide-react";
 import { usePlayerStore } from "@/client/features/player/store/playerStore";

@@ -1,3 +1,4 @@
+"use client";
 
 import { usePlayerStore } from "@/client/features/player/store/playerStore";
 

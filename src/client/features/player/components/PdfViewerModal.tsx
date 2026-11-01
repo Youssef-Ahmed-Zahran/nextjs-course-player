@@ -1,3 +1,4 @@
+"use client";
 
 import { X, ExternalLink, FileText } from "lucide-react";
 import { usePlayerStore } from "@/client/features/player/store/playerStore";
