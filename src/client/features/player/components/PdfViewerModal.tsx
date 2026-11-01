@@ -9,7 +9,7 @@ export default function PdfViewerModal() {
   if (!activePdfUrl) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/75 backdrop-blur-xs animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/75 backdrop-blur-sm ">
       <div className="relative w-full max-w-5xl h-[92vh] rounded-2xl bg-white shadow-2xl border border-gray-200 flex flex-col overflow-hidden">
         {/* Top bar */}
         <div className="flex items-center justify-between px-5 py-3.5 border-b border-gray-200 bg-gray-50">

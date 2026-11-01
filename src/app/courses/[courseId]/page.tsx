@@ -1,11 +1,31 @@
+import { Suspense, use } from "react";
 import CoursePlayerPage from "@/client/pages/CoursePlayerPage";
+import PageLoader from "@/client/components/loader/PageLoader";
+import { coursesData } from "@/data/courses.data";
 
-interface Props {
-  params: Promise<{ courseId: string }>;
+export function generateStaticParams() {
+  return coursesData.map((course) => ({
+    courseId: course.id,
+  }));
 }
 
-export default async function Page({ params }: Props) {
-  const { courseId } = await params;
+function CoursePlayerContent({
+  params,
+}: {
+  params: Promise<{ courseId: string }>;
+}) {
+  const { courseId } = use(params);
   return <CoursePlayerPage courseId={courseId} />;
 }
 
+export default function Page({
+  params,
+}: {
+  params: Promise<{ courseId: string }>;
+}) {
+  return (
+    <Suspense fallback={<PageLoader />}>
+      <CoursePlayerContent params={params} />
+    </Suspense>
+  );
+}

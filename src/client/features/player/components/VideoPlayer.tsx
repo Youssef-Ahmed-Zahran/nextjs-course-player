@@ -93,7 +93,7 @@ export default function VideoPlayer({ onScrollToCurriculum, onScrollToComments }
       {/* Top sticky video container for mobile */}
       <div
         ref={containerRef}
-        className="relative w-full bg-slate-950 aspect-video group overflow-hidden"
+        className="relative w-full bg-gray-900 aspect-video group overflow-hidden"
       >
         <video
           ref={videoRef}

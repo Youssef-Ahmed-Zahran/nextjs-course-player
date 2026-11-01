@@ -54,7 +54,7 @@ export default function CurriculumSidebar({ modules }: Props) {
                     onClick={() => handleLessonClick(lesson)}
                     className={`flex items-center justify-between p-2.5 rounded-lg text-xs cursor-pointer transition-all ${
                       isActive
-                        ? "bg-teal-50 text-teal-900 font-semibold border-l-4 border-teal-500 shadow-xs"
+                        ? "bg-teal-50 text-teal-900 font-semibold border-l-4 border-teal-500 shadow-sm"
                         : "text-gray-600 hover:bg-gray-50/80 hover:text-gray-900"
                     }`}
                   >

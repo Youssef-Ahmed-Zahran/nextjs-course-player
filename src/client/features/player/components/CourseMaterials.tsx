@@ -28,21 +28,21 @@ export default function CourseMaterials() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8">
           {/* Column 1 */}
           <div className="space-y-3.5">
-            <div className="flex items-center justify-between text-sm py-1 border-b border-gray-100/80">
+            <div className="flex items-center justify-between text-sm py-1 border-b border-gray-100">
               <span className="flex items-center gap-2 text-gray-500 font-medium">
                 <Clock className="h-4 w-4 text-gray-400" />
                 Duration:
               </span>
               <span className="font-semibold text-gray-800">{course.overviewStats.duration}</span>
             </div>
-            <div className="flex items-center justify-between text-sm py-1 border-b border-gray-100/80">
+            <div className="flex items-center justify-between text-sm py-1 border-b border-gray-100">
               <span className="flex items-center gap-2 text-gray-500 font-medium">
                 <BookOpen className="h-4 w-4 text-gray-400" />
                 Lessons:
               </span>
               <span className="font-semibold text-gray-800">{course.overviewStats.lessons}</span>
             </div>
-            <div className="flex items-center justify-between text-sm py-1 border-b border-gray-100/80">
+            <div className="flex items-center justify-between text-sm py-1 border-b border-gray-100">
               <span className="flex items-center gap-2 text-gray-500 font-medium">
                 <Users className="h-4 w-4 text-gray-400" />
                 Enrolled:
@@ -60,21 +60,21 @@ export default function CourseMaterials() {
 
           {/* Column 2 (mirrored statistics in desktop reference) */}
           <div className="space-y-3.5 sm:border-l sm:border-gray-100 sm:pl-8">
-            <div className="flex items-center justify-between text-sm py-1 border-b border-gray-100/80">
+            <div className="flex items-center justify-between text-sm py-1 border-b border-gray-100">
               <span className="flex items-center gap-2 text-gray-500 font-medium">
                 <Clock className="h-4 w-4 text-gray-400" />
                 Duration:
               </span>
               <span className="font-semibold text-gray-800">{course.overviewStats.duration}</span>
             </div>
-            <div className="flex items-center justify-between text-sm py-1 border-b border-gray-100/80">
+            <div className="flex items-center justify-between text-sm py-1 border-b border-gray-100">
               <span className="flex items-center gap-2 text-gray-500 font-medium">
                 <BookOpen className="h-4 w-4 text-gray-400" />
                 Lessons:
               </span>
               <span className="font-semibold text-gray-800">{course.overviewStats.lessons}</span>
             </div>
-            <div className="flex items-center justify-between text-sm py-1 border-b border-gray-100/80">
+            <div className="flex items-center justify-between text-sm py-1 border-b border-gray-100">
               <span className="flex items-center gap-2 text-gray-500 font-medium">
                 <Users className="h-4 w-4 text-gray-400" />
                 Enrolled:
