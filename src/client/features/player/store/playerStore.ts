@@ -47,6 +47,12 @@ export const usePlayerStore = create<PlayerStore>((set, get) => ({
   savedDraftComment: "",
 
   initPlayer: (course: Course) => {
+    const currentCourse = get().course;
+    if (currentCourse?.id === course.id) {
+      // Course is already loaded in store; preserve current state and lesson
+      return;
+    }
+
     const completedIds = new Set<string>(
       course.modules
         .flatMap((m) => m.lessons)

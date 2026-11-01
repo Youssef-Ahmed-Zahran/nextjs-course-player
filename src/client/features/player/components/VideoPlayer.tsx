@@ -30,7 +30,7 @@ function parseVideoSource(url: string) {
   if (ytMatch && ytMatch[1]) {
     return {
       type: "youtube" as const,
-      src: `https://www.youtube-nocookie.com/embed/${ytMatch[1]}?autoplay=1&rel=0&modestbranding=1`,
+      src: `https://www.youtube-nocookie.com/embed/${ytMatch[1]}?autoplay=0&rel=0&modestbranding=1`,
       id: ytMatch[1],
     };
   }
@@ -42,7 +42,7 @@ function parseVideoSource(url: string) {
   if (vimeoMatch && vimeoMatch[1]) {
     return {
       type: "vimeo" as const,
-      src: `https://player.vimeo.com/video/${vimeoMatch[1]}?autoplay=1`,
+      src: `https://player.vimeo.com/video/${vimeoMatch[1]}?autoplay=0`,
       id: vimeoMatch[1],
     };
   }
@@ -84,7 +84,6 @@ export default function VideoPlayer({
   useEffect(() => {
     if (videoSource.type === "video" && videoRef.current) {
       videoRef.current.load();
-      videoRef.current.play().catch(() => {});
     }
   }, [currentLessonId, videoSource.type]);
 
