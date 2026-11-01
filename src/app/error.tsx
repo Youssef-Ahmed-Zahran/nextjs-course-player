@@ -11,3 +11,4 @@ export default function Error({
 }) {
   return <ErrorFallback error={error} reset={reset} />;
 }
+

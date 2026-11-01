@@ -22,3 +22,4 @@ export default function CourseBreadcrumbs({ courseTitle = "Starting SEO as your 
     </nav>
   );
 }
+
