@@ -8,4 +8,3 @@ export default function PageLoader() {
     </div>
   );
 }
-

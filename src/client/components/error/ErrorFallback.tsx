@@ -14,7 +14,9 @@ export default function ErrorFallback({ error, reset }: Props) {
         <AlertTriangle className="h-8 w-8 text-red-400" />
       </div>
       <div className="space-y-2">
-        <h2 className="text-xl font-semibold text-white">Something went wrong</h2>
+        <h2 className="text-xl font-semibold text-white">
+          Something went wrong
+        </h2>
         <p className="max-w-sm text-sm text-gray-400">
           {error?.message ?? "An unexpected error occurred. Please try again."}
         </p>
@@ -31,4 +33,3 @@ export default function ErrorFallback({ error, reset }: Props) {
     </div>
   );
 }
-

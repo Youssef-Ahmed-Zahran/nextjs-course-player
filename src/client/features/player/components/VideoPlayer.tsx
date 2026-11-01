@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 import {
   Maximize,
   Minimize,
@@ -10,6 +10,8 @@ import {
   FileText,
   MessageSquare,
   Share2,
+  CheckCircle,
+  CheckCircle2,
 } from "lucide-react";
 import { usePlayerStore } from "@/client/features/player/store/playerStore";
 
@@ -18,14 +20,50 @@ interface Props {
   onScrollToComments?: () => void;
 }
 
+function parseVideoSource(url: string) {
+  if (!url) return { type: "video" as const, src: "" };
+
+  // YouTube match: watch?v=ID, youtu.be/ID, embed/ID
+  const ytRegex =
+    /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
+  const ytMatch = url.match(ytRegex);
+  if (ytMatch && ytMatch[1]) {
+    return {
+      type: "youtube" as const,
+      src: `https://www.youtube-nocookie.com/embed/${ytMatch[1]}?autoplay=1&rel=0&modestbranding=1`,
+      id: ytMatch[1],
+    };
+  }
+
+  // Vimeo match
+  const vimeoRegex =
+    /(?:vimeo\.com\/(?:channels\/(?:\w+\/)?|groups\/(?:[^\/]*)\/videos\/|album\/(?:\d+)\/video\/|video\/|))(\d+)/;
+  const vimeoMatch = url.match(vimeoRegex);
+  if (vimeoMatch && vimeoMatch[1]) {
+    return {
+      type: "vimeo" as const,
+      src: `https://player.vimeo.com/video/${vimeoMatch[1]}?autoplay=1`,
+      id: vimeoMatch[1],
+    };
+  }
+
+  return {
+    type: "video" as const,
+    src: url,
+    id: null,
+  };
+}
+
 export default function VideoPlayer({
   onScrollToCurriculum,
   onScrollToComments,
 }: Props) {
   const {
     currentLessonId,
+    completedLessonIds,
     getCurrentLesson,
     markLessonComplete,
+    toggleLessonComplete,
     isWidePlayer,
     toggleWidePlayer,
     openModal,
@@ -37,12 +75,18 @@ export default function VideoPlayer({
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [copied, setCopied] = useState(false);
 
+  const isCompleted = lesson ? completedLessonIds.has(lesson.id) : false;
+  const videoSource = useMemo(
+    () => parseVideoSource(lesson?.videoUrl ?? ""),
+    [lesson?.videoUrl]
+  );
+
   useEffect(() => {
-    if (videoRef.current) {
+    if (videoSource.type === "video" && videoRef.current) {
       videoRef.current.load();
       videoRef.current.play().catch(() => {});
     }
-  }, [currentLessonId]);
+  }, [currentLessonId, videoSource.type]);
 
   const handleVideoEnded = () => {
     if (currentLessonId) {
@@ -97,22 +141,33 @@ export default function VideoPlayer({
 
   return (
     <div className="flex flex-col bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm">
-      {/* Top sticky video container for mobile */}
+      {/* Top sticky video container */}
       <div
         ref={containerRef}
         className="relative w-full bg-gray-900 aspect-video group overflow-hidden"
       >
-        <video
-          ref={videoRef}
-          src={lesson.videoUrl}
-          className="w-full h-full object-contain"
-          controls
-          playsInline
-          onEnded={handleVideoEnded}
-        />
+        {videoSource.type === "youtube" || videoSource.type === "vimeo" ? (
+          <iframe
+            key={lesson.id}
+            src={videoSource.src}
+            title={lesson.title}
+            className="w-full h-full border-0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          />
+        ) : (
+          <video
+            ref={videoRef}
+            src={lesson.videoUrl}
+            className="w-full h-full object-contain"
+            controls
+            playsInline
+            onEnded={handleVideoEnded}
+          />
+        )}
 
         {/* Custom Overlay Buttons */}
-        <div className="absolute top-3 right-3 flex items-center gap-2 z-20">
+        <div className="absolute top-3 right-3 flex items-center gap-2 z-20 pointer-events-auto">
           {/* Wide Mode Toggle (Desktop only) */}
           <button
             onClick={toggleWidePlayer}
@@ -195,15 +250,36 @@ export default function VideoPlayer({
           </button>
         </div>
 
-        {/* Right: Quick Action Buttons & Interactive Popups (Required by Design Spec) */}
+        {/* Right: Quick Action Buttons & Interactive Popups */}
         <div className="flex items-center gap-2">
+          {/* Mark as Complete Button */}
+          <button
+            onClick={() => toggleLessonComplete(lesson.id)}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all border ${
+              isCompleted
+                ? "bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border-emerald-200"
+                : "bg-gray-50 text-gray-700 hover:bg-gray-100 border-gray-200"
+            }`}
+            title={
+              isCompleted ? "Completed (click to undo)" : "Mark as completed"
+            }
+          >
+            {isCompleted ? (
+              <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600" />
+            ) : (
+              <CheckCircle className="h-3.5 w-3.5 text-gray-400" />
+            )}
+            <span>{isCompleted ? "Completed" : "Mark Complete"}</span>
+          </button>
+
           {/* Ask Question Popup Button */}
           <button
             onClick={() => openModal("askQuestion")}
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-teal-50 text-teal-700 hover:bg-teal-100 text-xs font-semibold transition-colors border border-teal-100"
           >
             <HelpCircle className="h-3.5 w-3.5" />
-            <span>Ask Question</span>
+            <span className="hidden sm:inline">Ask Question</span>
+            <span className="sm:hidden">Ask</span>
           </button>
 
           {/* Leaderboard Popup Button */}
@@ -212,7 +288,8 @@ export default function VideoPlayer({
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-50 text-amber-700 hover:bg-amber-100 text-xs font-semibold transition-colors border border-amber-100"
           >
             <Trophy className="h-3.5 w-3.5" />
-            <span>Leaderboard</span>
+            <span className="hidden sm:inline">Leaderboard</span>
+            <span className="sm:hidden">Rank</span>
           </button>
 
           {/* Scroll to Curriculum (Mobile shortcut) */}

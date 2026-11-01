@@ -4,7 +4,8 @@ import Navbar from "@/client/components/header/Navbar";
 
 export const metadata: Metadata = {
   title: "EduFlow - Online Courses Platform & Player",
-  description: "Modern e-learning courses player platform with interactive assessments and real-time notes.",
+  description:
+    "Modern e-learning courses player platform with interactive assessments and real-time notes.",
 };
 
 export default function RootLayout({

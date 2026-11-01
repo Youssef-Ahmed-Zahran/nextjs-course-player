@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { GraduationCap, BookOpen, Compass, Search } from "lucide-react";
+import { GraduationCap, BookOpen, Search } from "lucide-react";
 
 export default function Navbar() {
   return (
@@ -48,7 +48,9 @@ export default function Navbar() {
                 className="h-full w-full object-cover"
               />
             </div>
-            <span className="hidden lg:inline text-xs font-medium text-gray-700">Ali Shahin</span>
+            <span className="hidden lg:inline text-xs font-medium text-gray-700">
+              Ali Shahin
+            </span>
           </div>
         </div>
       </div>
