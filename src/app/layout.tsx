@@ -1,6 +1,11 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Navbar from "@/client/components/header/Navbar";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
   title: "EduFlow - Online Courses Platform & Player",
@@ -15,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" data-scroll-behavior="smooth">
-      <body className="antialiased min-h-screen flex flex-col bg-[#f8fafc]">
+      <body className="antialiased min-h-screen flex flex-col bg-[#f8fafc]" suppressHydrationWarning>
         <Navbar />
         <div className="flex-1">{children}</div>
       </body>
