@@ -1,6 +1,6 @@
 import { coursesData } from "@/data/courses.data";
 import CourseList from "@/client/features/courses/components/CourseList";
-import { BookOpen, Sparkles, Award } from "lucide-react";
+import { BookOpen, Sparkles } from "lucide-react";
 
 export default function CoursesPage() {
   return (

@@ -1,6 +1,5 @@
-"use client";
 
-import { X, Trophy, Medal, Award, Flame } from "lucide-react";
+import { X, Trophy, Flame } from "lucide-react";
 import { usePlayerStore } from "@/client/features/player/store/playerStore";
 
 // Motivational quotes randomly selected
@@ -35,8 +34,12 @@ export default function LeaderboardModal() {
             <Trophy className="h-6 w-6" />
           </div>
           <div>
-            <h3 className="text-base font-bold text-gray-900">Student Leaderboard</h3>
-            <p className="text-xs text-gray-400">Top learners ranking this week</p>
+            <h3 className="text-base font-bold text-gray-900">
+              Student Leaderboard
+            </h3>
+            <p className="text-xs text-gray-400">
+              Top learners ranking this week
+            </p>
           </div>
         </div>
 
@@ -79,7 +82,9 @@ export default function LeaderboardModal() {
                     ) : isThird ? (
                       <span className="text-lg">🥉</span>
                     ) : (
-                      <span className="text-xs font-bold text-gray-400">#{student.rank}</span>
+                      <span className="text-xs font-bold text-gray-400">
+                        #{student.rank}
+                      </span>
                     )}
                   </div>
 
@@ -98,7 +103,8 @@ export default function LeaderboardModal() {
                       {student.name}
                     </h5>
                     <p className="text-[11px] text-gray-400">
-                      {student.completedLessons} lessons completed • {student.level}
+                      {student.completedLessons} lessons completed •{" "}
+                      {student.level}
                     </p>
                   </div>
                 </div>
@@ -127,4 +133,3 @@ export default function LeaderboardModal() {
     </div>
   );
 }
-

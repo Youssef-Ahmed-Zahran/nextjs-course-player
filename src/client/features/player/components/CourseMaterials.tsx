@@ -1,20 +1,19 @@
-"use client";
 
-import { Clock, BookOpen, Users, Globe, Download, Eye, FileText, CheckCircle } from "lucide-react";
+import {
+  Clock,
+  BookOpen,
+  Users,
+  Globe,
+  Download,
+  Eye,
+  FileText,
+} from "lucide-react";
 import { usePlayerStore } from "@/client/features/player/store/playerStore";
-import { CourseMaterialItem } from "@/client/features/courses/types/course.types";
 
 export default function CourseMaterials() {
   const { course, openModal } = usePlayerStore();
 
   if (!course) return null;
-
-  const stats = [
-    { label: "Duration:", value: course.overviewStats.duration, icon: Clock },
-    { label: "Lessons:", value: course.overviewStats.lessons.toString(), icon: BookOpen },
-    { label: "Enrolled:", value: course.overviewStats.enrolled, icon: Users },
-    { label: "Language:", value: course.overviewStats.language, icon: Globe },
-  ];
 
   return (
     <section className="bg-white rounded-xl p-6 border border-gray-100 shadow-sm space-y-6">
@@ -33,28 +32,36 @@ export default function CourseMaterials() {
                 <Clock className="h-4 w-4 text-gray-400" />
                 Duration:
               </span>
-              <span className="font-semibold text-gray-800">{course.overviewStats.duration}</span>
+              <span className="font-semibold text-gray-800">
+                {course.overviewStats.duration}
+              </span>
             </div>
             <div className="flex items-center justify-between text-sm py-1 border-b border-gray-100">
               <span className="flex items-center gap-2 text-gray-500 font-medium">
                 <BookOpen className="h-4 w-4 text-gray-400" />
                 Lessons:
               </span>
-              <span className="font-semibold text-gray-800">{course.overviewStats.lessons}</span>
+              <span className="font-semibold text-gray-800">
+                {course.overviewStats.lessons}
+              </span>
             </div>
             <div className="flex items-center justify-between text-sm py-1 border-b border-gray-100">
               <span className="flex items-center gap-2 text-gray-500 font-medium">
                 <Users className="h-4 w-4 text-gray-400" />
                 Enrolled:
               </span>
-              <span className="font-semibold text-gray-800">{course.overviewStats.enrolled}</span>
+              <span className="font-semibold text-gray-800">
+                {course.overviewStats.enrolled}
+              </span>
             </div>
             <div className="flex items-center justify-between text-sm py-1">
               <span className="flex items-center gap-2 text-gray-500 font-medium">
                 <Globe className="h-4 w-4 text-gray-400" />
                 Language:
               </span>
-              <span className="font-semibold text-gray-800">{course.overviewStats.language}</span>
+              <span className="font-semibold text-gray-800">
+                {course.overviewStats.language}
+              </span>
             </div>
           </div>
 
@@ -65,28 +72,36 @@ export default function CourseMaterials() {
                 <Clock className="h-4 w-4 text-gray-400" />
                 Duration:
               </span>
-              <span className="font-semibold text-gray-800">{course.overviewStats.duration}</span>
+              <span className="font-semibold text-gray-800">
+                {course.overviewStats.duration}
+              </span>
             </div>
             <div className="flex items-center justify-between text-sm py-1 border-b border-gray-100">
               <span className="flex items-center gap-2 text-gray-500 font-medium">
                 <BookOpen className="h-4 w-4 text-gray-400" />
                 Lessons:
               </span>
-              <span className="font-semibold text-gray-800">{course.overviewStats.lessons}</span>
+              <span className="font-semibold text-gray-800">
+                {course.overviewStats.lessons}
+              </span>
             </div>
             <div className="flex items-center justify-between text-sm py-1 border-b border-gray-100">
               <span className="flex items-center gap-2 text-gray-500 font-medium">
                 <Users className="h-4 w-4 text-gray-400" />
                 Enrolled:
               </span>
-              <span className="font-semibold text-gray-800">{course.overviewStats.enrolled}</span>
+              <span className="font-semibold text-gray-800">
+                {course.overviewStats.enrolled}
+              </span>
             </div>
             <div className="flex items-center justify-between text-sm py-1">
               <span className="flex items-center gap-2 text-gray-500 font-medium">
                 <Globe className="h-4 w-4 text-gray-400" />
                 Language:
               </span>
-              <span className="font-semibold text-gray-800">{course.overviewStats.language}</span>
+              <span className="font-semibold text-gray-800">
+                {course.overviewStats.language}
+              </span>
             </div>
           </div>
         </div>
@@ -112,7 +127,9 @@ export default function CourseMaterials() {
                     <p className="text-xs font-semibold text-gray-800 truncate group-hover:text-teal-600 transition-colors">
                       {mat.title}
                     </p>
-                    <p className="text-[11px] text-gray-400">{mat.size ?? "Document"}</p>
+                    <p className="text-[11px] text-gray-400">
+                      {mat.size ?? "Document"}
+                    </p>
                   </div>
                 </div>
 
@@ -120,7 +137,11 @@ export default function CourseMaterials() {
                   {/* View in PDF Modal */}
                   {mat.type === "pdf" && (
                     <button
-                      onClick={() => openModal("pdfViewer", { pdfUrl: mat.previewUrl ?? mat.url })}
+                      onClick={() =>
+                        openModal("pdfViewer", {
+                          pdfUrl: mat.previewUrl ?? mat.url,
+                        })
+                      }
                       className="p-1.5 rounded-md text-gray-400 hover:text-teal-600 hover:bg-teal-50 transition-colors"
                       title="Preview in full popup"
                     >
@@ -145,4 +166,3 @@ export default function CourseMaterials() {
     </section>
   );
 }
-

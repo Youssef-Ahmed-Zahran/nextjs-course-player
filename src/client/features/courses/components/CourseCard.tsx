@@ -1,5 +1,12 @@
 import Link from "next/link";
-import { Star, Clock, BookOpen, Users, CheckCircle, ArrowRight } from "lucide-react";
+import {
+  Star,
+  Clock,
+  BookOpen,
+  Users,
+  CheckCircle,
+  ArrowRight,
+} from "lucide-react";
 import { Course } from "@/client/features/courses/types/course.types";
 
 interface Props {
@@ -41,7 +48,9 @@ export default function CourseCard({ course }: Props) {
           <div className="flex items-center gap-1 text-amber-500 font-bold">
             <Star className="h-3.5 w-3.5 fill-current" />
             <span>{course.rating.toFixed(1)}</span>
-            <span className="text-gray-400 font-normal">({course.reviewCount})</span>
+            <span className="text-gray-400 font-normal">
+              ({course.reviewCount})
+            </span>
           </div>
           <span className="text-gray-400 font-medium">{course.level}</span>
         </div>
@@ -65,7 +74,9 @@ export default function CourseCard({ course }: Props) {
               className="h-full w-full object-cover"
             />
           </div>
-          <span className="text-xs font-semibold text-gray-700">{course.instructor}</span>
+          <span className="text-xs font-semibold text-gray-700">
+            {course.instructor}
+          </span>
         </div>
 
         {/* Meta Stats */}
@@ -106,7 +117,13 @@ export default function CourseCard({ course }: Props) {
             href={`/courses/${course.id}`}
             className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-teal-500 hover:bg-teal-600 text-white text-xs font-bold transition-all shadow-sm group-hover:shadow hover:gap-3"
           >
-            <span>{isCompleted ? "Review Course" : isStarted ? "Continue Learning" : "Start Course"}</span>
+            <span>
+              {isCompleted
+                ? "Review Course"
+                : isStarted
+                  ? "Continue Learning"
+                  : "Start Course"}
+            </span>
             <ArrowRight className="h-3.5 w-3.5" />
           </Link>
         </div>

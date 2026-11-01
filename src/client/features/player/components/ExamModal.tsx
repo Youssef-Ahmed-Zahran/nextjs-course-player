@@ -1,14 +1,16 @@
-"use client";
 
 import { useState } from "react";
-import { X, CheckCircle, AlertCircle, ArrowRight, RotateCcw } from "lucide-react";
+import { X, CheckCircle, ArrowRight, RotateCcw } from "lucide-react";
 import confetti from "canvas-confetti";
 import { usePlayerStore } from "@/client/features/player/store/playerStore";
 
 export default function ExamModal() {
-  const { closeModal, activeQuiz, markLessonComplete, currentLessonId } = usePlayerStore();
+  const { closeModal, activeQuiz, markLessonComplete, currentLessonId } =
+    usePlayerStore();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [selectedAnswers, setSelectedAnswers] = useState<Record<number, number>>({});
+  const [selectedAnswers, setSelectedAnswers] = useState<
+    Record<number, number>
+  >({});
   const [isFinished, setIsFinished] = useState(false);
 
   if (!activeQuiz) return null;
@@ -90,7 +92,8 @@ export default function ExamModal() {
             {/* Options list */}
             <div className="space-y-2 pt-1">
               {currentQ.options.map((opt, optIdx) => {
-                const isSelected = selectedAnswers[currentQuestionIndex] === optIdx;
+                const isSelected =
+                  selectedAnswers[currentQuestionIndex] === optIdx;
                 return (
                   <button
                     key={optIdx}
@@ -109,7 +112,9 @@ export default function ExamModal() {
                           : "border-gray-300"
                       }`}
                     >
-                      {isSelected && <span className="h-1.5 w-1.5 rounded-full bg-white" />}
+                      {isSelected && (
+                        <span className="h-1.5 w-1.5 rounded-full bg-white" />
+                      )}
                     </div>
                   </button>
                 );
@@ -123,7 +128,11 @@ export default function ExamModal() {
                 disabled={selectedAnswers[currentQuestionIndex] === undefined}
                 className="inline-flex items-center gap-1.5 px-6 py-2.5 rounded-xl bg-teal-500 hover:bg-teal-600 text-white text-xs font-semibold shadow-sm transition-all disabled:opacity-40"
               >
-                <span>{currentQuestionIndex === total - 1 ? "Submit Exam" : "Next Question"}</span>
+                <span>
+                  {currentQuestionIndex === total - 1
+                    ? "Submit Exam"
+                    : "Next Question"}
+                </span>
                 <ArrowRight className="h-4 w-4" />
               </button>
             </div>
@@ -135,7 +144,9 @@ export default function ExamModal() {
               <CheckCircle className="h-8 w-8" />
             </div>
             <div>
-              <h4 className="text-lg font-bold text-gray-900">Quiz Completed!</h4>
+              <h4 className="text-lg font-bold text-gray-900">
+                Quiz Completed!
+              </h4>
               <p className="text-xs text-gray-500 mt-1">
                 Your score:{" "}
                 <span className="font-bold text-emerald-600">
@@ -173,4 +184,3 @@ export default function ExamModal() {
     </div>
   );
 }
-

@@ -1,4 +1,3 @@
-"use client";
 
 import { CheckCircle2, Lock, FileQuestion, Clock, Play } from "lucide-react";
 import { usePlayerStore } from "@/client/features/player/store/playerStore";
@@ -9,7 +8,8 @@ interface Props {
 }
 
 export default function CurriculumSidebar({ modules }: Props) {
-  const { currentLessonId, completedLessonIds, selectLesson, openModal } = usePlayerStore();
+  const { currentLessonId, completedLessonIds, selectLesson, openModal } =
+    usePlayerStore();
 
   const handleLessonClick = (lesson: any) => {
     if (lesson.isLocked) return;
@@ -36,7 +36,9 @@ export default function CurriculumSidebar({ modules }: Props) {
           <div key={module.id} className="p-5 space-y-3.5">
             {/* Module header */}
             <div>
-              <h4 className="text-sm font-bold text-gray-900">{module.title}</h4>
+              <h4 className="text-sm font-bold text-gray-900">
+                {module.title}
+              </h4>
               <p className="text-xs text-gray-400 mt-0.5 leading-snug">
                 {module.subtitle}
               </p>
@@ -69,7 +71,9 @@ export default function CurriculumSidebar({ modules }: Props) {
                           <FileQuestion className="h-4 w-4 text-gray-400" />
                         )}
                       </div>
-                      <span className="truncate leading-tight">{lesson.title}</span>
+                      <span className="truncate leading-tight">
+                        {lesson.title}
+                      </span>
                     </div>
 
                     {/* Right: Badges / Locked State */}
@@ -86,8 +90,11 @@ export default function CurriculumSidebar({ modules }: Props) {
                       )}
                       {lesson.isLocked ? (
                         <Lock className="h-3.5 w-3.5 text-gray-300" />
-                      ) : !lesson.questionBadge && !lesson.timeBadge && (
-                        <Lock className="h-3.5 w-3.5 text-gray-300" />
+                      ) : (
+                        !lesson.questionBadge &&
+                        !lesson.timeBadge && (
+                          <Lock className="h-3.5 w-3.5 text-gray-300" />
+                        )
                       )}
                     </div>
                   </div>

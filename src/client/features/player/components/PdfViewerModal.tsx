@@ -1,6 +1,5 @@
-"use client";
 
-import { X, Download, ExternalLink, FileText } from "lucide-react";
+import { X, ExternalLink, FileText } from "lucide-react";
 import { usePlayerStore } from "@/client/features/player/store/playerStore";
 
 export default function PdfViewerModal() {
@@ -21,7 +20,9 @@ export default function PdfViewerModal() {
               <h3 className="text-xs font-bold text-gray-900 truncate max-w-xs sm:max-w-md">
                 Document / Material Fullscreen Viewer
               </h3>
-              <p className="text-[10px] text-gray-400">PDF Reader & Annotation Preview</p>
+              <p className="text-[10px] text-gray-400">
+                PDF Reader & Annotation Preview
+              </p>
             </div>
           </div>
 
@@ -57,4 +58,3 @@ export default function PdfViewerModal() {
     </div>
   );
 }
-

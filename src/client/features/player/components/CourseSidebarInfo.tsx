@@ -1,4 +1,3 @@
-"use client";
 
 import { usePlayerStore } from "@/client/features/player/store/playerStore";
 
@@ -37,7 +36,10 @@ export default function CourseSidebarInfo() {
         {/* Circular Progress Badge */}
         <div className="relative flex flex-col items-center">
           <div className="relative h-11 w-11 flex items-center justify-center">
-            <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+            <svg
+              className="w-full h-full transform -rotate-90"
+              viewBox="0 0 36 36"
+            >
               {/* Background track */}
               <path
                 className="text-gray-100"
@@ -57,7 +59,9 @@ export default function CourseSidebarInfo() {
                 d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
               />
             </svg>
-            <span className="absolute text-[11px] font-bold text-gray-700">{progress}%</span>
+            <span className="absolute text-[11px] font-bold text-gray-700">
+              {progress}%
+            </span>
           </div>
         </div>
       </div>

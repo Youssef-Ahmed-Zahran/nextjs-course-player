@@ -1,11 +1,11 @@
-"use client";
 
 import { useState } from "react";
-import { ArrowRight, MessageSquare, ThumbsUp } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { usePlayerStore } from "@/client/features/player/store/playerStore";
 
 export default function CommentSection() {
-  const { comments, addComment, savedDraftComment, setSavedDraftComment } = usePlayerStore();
+  const { comments, addComment, savedDraftComment, setSavedDraftComment } =
+    usePlayerStore();
   const [inputText, setInputText] = useState(savedDraftComment);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -40,7 +40,10 @@ export default function CommentSection() {
       {/* Existing Comments List */}
       <div className="space-y-6 divide-y divide-gray-100">
         {comments.map((comm, index) => (
-          <div key={comm.id} className={`flex items-start gap-4 ${index > 0 ? "pt-5" : ""}`}>
+          <div
+            key={comm.id}
+            className={`flex items-start gap-4 ${index > 0 ? "pt-5" : ""}`}
+          >
             {/* Student Avatar */}
             <div className="relative h-11 w-11 flex-shrink-0 rounded-full overflow-hidden border border-gray-100 shadow-sm">
               <img
@@ -53,8 +56,12 @@ export default function CommentSection() {
             {/* Comment Body */}
             <div className="flex-1 space-y-1">
               <div className="flex items-baseline justify-between">
-                <h4 className="text-sm font-semibold text-gray-900">{comm.author}</h4>
-                <span className="text-xs text-gray-400 font-normal">{comm.createdAt}</span>
+                <h4 className="text-sm font-semibold text-gray-900">
+                  {comm.author}
+                </h4>
+                <span className="text-xs text-gray-400 font-normal">
+                  {comm.createdAt}
+                </span>
               </div>
               <p className="text-xs leading-relaxed text-gray-500 font-normal">
                 {comm.content}
@@ -65,7 +72,10 @@ export default function CommentSection() {
       </div>
 
       {/* Write a comment form */}
-      <form onSubmit={handleSubmit} className="space-y-4 pt-4 border-t border-gray-100">
+      <form
+        onSubmit={handleSubmit}
+        className="space-y-4 pt-4 border-t border-gray-100"
+      >
         <div>
           <label htmlFor="commentInput" className="sr-only">
             Write a comment
@@ -95,4 +105,3 @@ export default function CommentSection() {
     </section>
   );
 }
-

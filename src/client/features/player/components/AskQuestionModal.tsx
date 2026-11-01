@@ -1,4 +1,3 @@
-"use client";
 
 import { useState } from "react";
 import { X, HelpCircle, Send, CheckCircle2 } from "lucide-react";
@@ -17,7 +16,10 @@ export default function AskQuestionModal() {
     if (!questionTitle.trim()) return;
 
     // Post as a discussion comment referencing the question
-    addComment(`[Question: ${questionTitle}] ${questionDetails}`, "Student Question");
+    addComment(
+      `[Question: ${questionTitle}] ${questionDetails}`,
+      "Student Question",
+    );
     setSubmitted(true);
     setTimeout(() => {
       closeModal();
@@ -40,9 +42,12 @@ export default function AskQuestionModal() {
             <div className="h-12 w-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
               <CheckCircle2 className="h-6 w-6" />
             </div>
-            <h3 className="text-lg font-bold text-gray-900">Question Submitted!</h3>
+            <h3 className="text-lg font-bold text-gray-900">
+              Question Submitted!
+            </h3>
             <p className="text-xs text-gray-500">
-              The instructor and fellow students have been notified in the discussion thread.
+              The instructor and fellow students have been notified in the
+              discussion thread.
             </p>
           </div>
         ) : (
@@ -52,7 +57,9 @@ export default function AskQuestionModal() {
                 <HelpCircle className="h-5 w-5" />
               </div>
               <div>
-                <h3 className="text-base font-bold text-gray-900">Ask a Question</h3>
+                <h3 className="text-base font-bold text-gray-900">
+                  Ask a Question
+                </h3>
                 <p className="text-xs text-gray-400">
                   Regarding: {lesson?.title ?? course?.title}
                 </p>
@@ -60,7 +67,9 @@ export default function AskQuestionModal() {
             </div>
 
             <div className="space-y-1">
-              <label className="text-xs font-semibold text-gray-700">Question Summary</label>
+              <label className="text-xs font-semibold text-gray-700">
+                Question Summary
+              </label>
               <input
                 type="text"
                 required
@@ -72,7 +81,9 @@ export default function AskQuestionModal() {
             </div>
 
             <div className="space-y-1">
-              <label className="text-xs font-semibold text-gray-700">Detailed Description</label>
+              <label className="text-xs font-semibold text-gray-700">
+                Detailed Description
+              </label>
               <textarea
                 rows={4}
                 value={questionDetails}
@@ -105,4 +116,3 @@ export default function AskQuestionModal() {
     </div>
   );
 }
-

@@ -21,8 +21,8 @@ export default function CourseProgressBar({
               clamped === 100
                 ? "text-emerald-400"
                 : clamped > 0
-                ? "text-violet-400"
-                : "text-gray-500"
+                  ? "text-violet-400"
+                  : "text-gray-500"
             }
           >
             {clamped}%
@@ -35,8 +35,8 @@ export default function CourseProgressBar({
             clamped === 100
               ? "bg-emerald-500"
               : clamped > 0
-              ? "bg-violet-500"
-              : "bg-gray-600"
+                ? "bg-violet-500"
+                : "bg-gray-600"
           }`}
           style={{ width: `${clamped}%` }}
           role="progressbar"
@@ -48,4 +48,3 @@ export default function CourseProgressBar({
     </div>
   );
 }
-

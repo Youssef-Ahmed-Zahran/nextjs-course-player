@@ -5,7 +5,9 @@ interface Props {
   courseTitle?: string;
 }
 
-export default function CourseBreadcrumbs({ courseTitle = "Starting SEO as your Home" }: Props) {
+export default function CourseBreadcrumbs({
+  courseTitle = "Starting SEO as your Home",
+}: Props) {
   return (
     <nav className="flex items-center gap-1.5 text-xs text-gray-400 font-medium py-3">
       <Link href="/" className="hover:text-teal-600 transition-colors">
@@ -22,4 +24,3 @@ export default function CourseBreadcrumbs({ courseTitle = "Starting SEO as your 
     </nav>
   );
 }
-
