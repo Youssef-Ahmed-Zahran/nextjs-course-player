@@ -17,8 +17,9 @@ export default function CoursesPage() {
               Explore Our Featured Courses
             </h1>
             <p className="text-sm sm:text-base text-gray-500 leading-relaxed">
-              Advance your career with industry-proven courses taught by expert practitioners.
-              Track your progress, take interactive exams, and learn at your own pace.
+              Advance your career with industry-proven courses taught by expert
+              practitioners. Track your progress, take interactive exams, and
+              learn at your own pace.
             </p>
           </div>
         </div>
@@ -29,7 +30,9 @@ export default function CoursesPage() {
         <div className="flex items-center justify-between pb-6">
           <div className="flex items-center gap-2">
             <BookOpen className="h-5 w-5 text-teal-600" />
-            <h2 className="text-lg font-bold text-gray-900">Available Courses (6)</h2>
+            <h2 className="text-lg font-bold text-gray-900">
+              Available Courses (6)
+            </h2>
           </div>
         </div>
 
@@ -38,4 +41,3 @@ export default function CoursesPage() {
     </div>
   );
 }
-

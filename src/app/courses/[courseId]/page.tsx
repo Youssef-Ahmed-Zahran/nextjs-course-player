@@ -1,5 +1,5 @@
 import { Suspense, use } from "react";
-import CoursePlayerPage from "@/client/pages/CoursePlayerPage";
+import CoursePlayerPage from "@/client/features/player/pages/CoursePlayerPage";
 import PageLoader from "@/client/components/loader/PageLoader";
 import { coursesData } from "@/data/courses.data";
 

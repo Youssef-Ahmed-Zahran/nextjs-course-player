@@ -1,4 +1,4 @@
-import CoursesPage from "@/client/pages/CoursesPage";
+import CoursesPage from "@/client/features/courses/pages/CoursesPage";
 
 export default function Page() {
   return <CoursesPage />;
