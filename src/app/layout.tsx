@@ -13,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-scroll-behavior="smooth">
       <body className="antialiased min-h-screen flex flex-col bg-[#f8fafc]">
         <Navbar />
         <div className="flex-1">{children}</div>
